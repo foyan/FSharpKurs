@@ -6,9 +6,9 @@ let rec exp n =
     else 2 * exp (n-1)
 
 // b)
-let rec fak n =
-    if n = 0 then 1
-    else n * fak (n-1)
+let rec fak = function
+    | 0 -> 1
+    | n -> n * fak (n-1)
 
 // d)
 let rec sum f m n = 
@@ -16,5 +16,5 @@ let rec sum f m n =
     else f m + sum f (m+1) n
 
 // c) = Aufgabe 4
-let rec sum_sq m n = sum (fun x -> x * x) m n
+let sum_sq m n = sum (fun x -> x * x) m n
 
