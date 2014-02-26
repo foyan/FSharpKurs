@@ -1,19 +1,25 @@
 ﻿module Praktikum2_Aufgabe2
 
-let append a b = 0
 
-let rec rev = function
-    | [] -> []
-    | x::xs -> rev []
+let append a b =
+    let rec _rev res = function
+        | [] -> res
+        | x::xs -> _rev (x::res) xs
+    _rev b (_rev [] a)
 
-let rec map f list =
-    if List.length list = 0 then []
-    else
-        let x = f (List.head list)
-        let xs = List.tail list
-        x::(map f xs)
+
+let rev list =
+    let rec _rev res = function
+        | [] -> res
+        | x::xs -> _rev (x::res) xs
+    _rev [] list
+
     
-let rec fold f seed = function
-    | [] -> seed
-    | x::xs -> f x (fold f seed xs)
+let rec map f = function
+    | [] -> []
+    | x::xs -> (f x)::(map f xs)
 
+
+let rec fold f acc = function
+    | [] -> acc
+    | x::xs -> f acc (fold f x xs)
